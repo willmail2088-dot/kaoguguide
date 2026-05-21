@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考古文博考研 · 知识库</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+  :root {
+    --page-bg: #f5f0e8;
+    --paper: #faf6ef;
+    --ink: #2c2416;
+    --ink-light: #5a4a32;
+    --accent: #8b5e3c;
+    --accent-light: #c4956a;
+    --border: #d4c9b4;
+    --highlight: #e8d5b0;
+    --green-accent: #5a7d5c;
+    --card-hover: #f3ede2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--page-bg);
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--ink);
+    line-height: 1.8;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  /* ---- Header ---- */
+  .header {
+    background: var(--paper);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    padding: 40px 32px 32px;
+    border-radius: 8px;
+    margin-bottom: 28px;
+    text-align: center;
+    background-image:
+      radial-gradient(ellipse at 20% 30%, rgba(139,94,60,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(139,94,60,0.02) 0%, transparent 50%);
+  }
+
+  .header h1 {
+    font-family: 'Noto Serif SC', 'STSong', serif;
+    font-size: 28pt;
+    font-weight: 900;
+    color: var(--ink);
+    letter-spacing: 3px;
+  }
+
+  .header h1 span { color: var(--accent); }
+
+  .header .subtitle {
+    color: var(--ink-light);
+    font-size: 11pt;
+    margin-top: 6px;
+    letter-spacing: 2px;
+  }
+
+  .header .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 9pt;
+    padding: 3px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+
+  .badge.green { background: var(--green-accent); }
+
+  /* ---- Section title ---- */
+  .section-title {
+    font-family: 'Noto Serif SC', 'STSong', serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 28px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+    letter-spacing: 1px;
+  }
+
+  .section-title .count {
+    font-size: 10pt;
+    font-weight: 400;
+    color: var(--ink-light);
+    margin-left: 8px;
+  }
+
+  /* ---- Card grid ---- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .topic-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .topic-card:hover {
+    background: var(--card-hover);
+    border-color: var(--accent-light);
+    box-shadow: 0 4px 12px rgba(139,94,60,0.12);
+    transform: translateY(-2px);
+  }
+
+  .topic-card .card-title {
+    font-family: 'Noto Serif SC', 'STSong', serif;
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .topic-card .card-desc {
+    font-size: 9.5pt;
+    color: var(--ink-light);
+    flex: 1;
+    margin-bottom: 10px;
+  }
+
+  .topic-card .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .topic-card .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .topic-card .card-tag {
+    font-size: 7.5pt;
+    background: var(--highlight);
+    color: var(--ink-light);
+    padding: 1px 8px;
+    border-radius: 10px;
+  }
+
+  .topic-card .card-date {
+    font-size: 8pt;
+    color: var(--accent-light);
+    white-space: nowrap;
+  }
+
+  .card-placeholder {
+    background: var(--paper);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: var(--ink-light);
+    font-size: 9.5pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 140px;
+  }
+
+  .card-placeholder .plus { font-size: 28pt; color: var(--accent-light); line-height: 1; }
+
+  /* ---- Changelog ---- */
+  .changelog {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 12px;
+  }
+
+  .changelog .entry {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .changelog .entry:last-child { border-bottom: none; }
+
+  .changelog .entry-date {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 9.5pt;
+  }
+
+  .changelog .entry-desc {
+    font-size: 9.5pt;
+    color: var(--ink);
+  }
+
+  .changelog .entry-desc .tag {
+    display: inline-block;
+    font-size: 7.5pt;
+    background: var(--accent);
+    color: white;
+    padding: 0 6px;
+    border-radius: 3px;
+    margin-right: 4px;
+  }
+
+  .changelog .entry-desc .tag.new { background: var(--green-accent); }
+  .changelog .entry-desc .tag.update { background: var(--accent); }
+
+  /* ---- Footer ---- */
+  .footer {
+    text-align: center;
+    color: var(--ink-light);
+    font-size: 8.5pt;
+    padding: 24px 0 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+  }
+
+  /* ---- Empty state when no cards yet ---- */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--ink-light);
+  }
+
+  /* ---- Mobile ---- */
+  @media (max-width: 600px) {
+    .container { padding: 12px 10px; }
+    .header { padding: 24px 16px; }
+    .header h1 { font-size: 20pt; }
+    .card-grid { grid-template-columns: 1fr; }
+    .changelog .entry { grid-template-columns: 1fr; gap: 2px; }
+    .topic-card .card-footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>📜 考古文博 · <span>考研知识库</span></h1>
+    <div class="subtitle">基于本地素材整理的专题复习资料 · A4 打印 · 持续更新</div>
+    <div class="badge-row">
+      <span class="badge">📖 知识点整理</span>
+      <span class="badge green">📝 真题参考答案</span>
+      <span class="badge">🖨️ 打印友好</span>
+      <span class="badge green">🏛️ 考古学通论</span>
+    </div>
+  </div>
+
+  <!-- Topic Grid -->
+  <div class="section-title">
+    复习资料 <span class="count">— 共 1 份</span>
+  </div>
+
+  <div class="card-grid">
+
+    <a class="topic-card" href="topics/中国石器时代与史前考古.html">
+      <div class="card-title">中国石器时代与史前考古学文化</div>
+      <div class="card-desc">
+        涵盖旧石器时代（早期/中期/晚期及两大传统）、新石器时代（六大区系 × 前仰韶/仰韶/龙山）、关键专题（人类起源/农业起源/文明起源）及高频考点与论述题参考答案。
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">旧石器</span>
+          <span class="card-tag">新石器</span>
+          <span class="card-tag">六大区系</span>
+          <span class="card-tag">论述题</span>
+        </div>
+        <span class="card-date">2026.05</span>
+      </div>
+    </a>
+
+    <!-- Placeholder for future topics -->
+    <div class="card-placeholder">
+      <div class="plus">+</div>
+      <div>新资料待添加</div>
+      <div style="font-size:8pt;">可加入：人类起源、博物馆学、文物学……</div>
+    </div>
+
+  </div>
+
+  <!-- Changelog -->
+  <div class="section-title">📋 更新记录</div>
+  <div class="changelog">
+    <div class="entry">
+      <div class="entry-date">2026.05.21</div>
+      <div class="entry-desc">
+        <span class="tag new">新增</span>
+        创建知识库门户，收录《中国石器时代与史前考古学文化》——含旧/新石器时代总述、六大区系详解、13道论述题参考答案框架
+      </div>
+    </div>
+  </div>
+
+  <!-- How to add -->
+  <div class="section-title">📌 如何添加新资料</div>
+  <div class="changelog">
+    <div class="entry">
+      <div class="entry-date">①</div>
+      <div class="entry-desc">在 <code>topics/</code> 目录下放入新的 HTML 复习资料文件</div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">②</div>
+      <div class="entry-desc">在 <code>index.html</code> 的 <code>.card-grid</code> 中添加一张卡片（复制现有卡片模板，改标题、描述、标签和路径）</div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">③</div>
+      <div class="entry-desc">在"更新记录"中添加一条新条目</div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">④</div>
+      <div class="entry-desc">将整个 <code>考研知识库/</code> 文件夹拖拽到 <a href="https://app.netlify.com" target="_blank" style="color:var(--accent);">Netlify</a> 部署（或 <code>netlify deploy --dir=. --prod</code>）</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    考古文博考研知识库 · 基于本地素材自主整理 · 持续建设中
+  </div>
+
+</div>
+</body>
+</html>

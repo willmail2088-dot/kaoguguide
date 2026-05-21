@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国石器时代与史前考古学文化 — 考研复习资料</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+  :root {
+    --page-bg: #f5f0e8;
+    --paper: #faf6ef;
+    --ink: #2c2416;
+    --ink-light: #5a4a32;
+    --accent: #8b5e3c;
+    --accent-light: #c4956a;
+    --border: #d4c9b4;
+    --highlight: #e8d5b0;
+    --table-stripe: #f3ede2;
+    --exam-tag: #c0392b;
+    --timeline-bar: #8b5e3c;
+    --green-accent: #5a7d5c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--page-bg);
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--ink);
+    line-height: 1.8;
+    padding: 0;
+  }
+
+  /* A4 continuous layout — no manual page breaks, responsive */
+  .page {
+    max-width: 210mm;
+    margin: 8mm auto;
+    background: var(--paper);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    padding: 16mm 14mm 14mm 14mm;
+    position: relative;
+    /* Subtle paper texture */
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(139,94,60,0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,94,60,0.015) 0%, transparent 50%);
+  }
+
+  @media print {
+    body { background: white; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      max-width: 100%;
+      padding: 14mm 12mm 12mm 12mm;
+      page-break-inside: avoid;
+      background: white;
+    }
+    .no-print { display: none; }
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .page {
+      max-width: 100%;
+      margin: 0;
+      padding: 16px 14px;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    h1 { font-size: 22pt; }
+    h2 { font-size: 14pt; }
+    h3 { font-size: 12pt; }
+    p { font-size: 10pt; }
+    table { font-size: 8.5pt; }
+    .culture-card .attr-grid { grid-template-columns: 50px 1fr; font-size: 8.5pt; }
+    .timeline-container::before { left: 60px; }
+    .timeline-item { grid-template-columns: 60px 1fr; }
+    .timeline-item::before { left: 56px; }
+    .toc a { font-size: 9.5pt; }
+  }
+  @media (max-width: 480px) {
+    .page { padding: 10px 10px; }
+    h1 { font-size: 18pt; }
+    h2 { font-size: 12pt; }
+    h3 { font-size: 11pt; }
+    p { font-size: 9pt; }
+    table { font-size: 7.5pt; }
+    th, td { padding: 3px 4px; }
+    .culture-card .attr-grid { grid-template-columns: 40px 1fr; font-size: 8pt; gap: 1px 4px; }
+    .culture-chain { font-size: 8pt; }
+    .timeline-container::before { left: 40px; }
+    .timeline-item { grid-template-columns: 40px 1fr; gap: 8px; }
+    .timeline-item::before { left: 36px; width: 8px; height: 8px; }
+    .timeline-year { font-size: 7.5pt; }
+    .timeline-content { font-size: 8pt; }
+  }
+
+  /* ---- Typography ---- */
+  h1 {
+    font-family: 'Noto Serif SC', 'STSong', serif;
+    font-size: 26pt;
+    font-weight: 900;
+    color: var(--ink);
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 3px double var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: var(--ink-light);
+    font-size: 11pt;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif SC', 'STSong', serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 24px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+    letter-spacing: 1px;
+  }
+
+  h2 .section-num {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    padding: 0 8px;
+    border-radius: 3px;
+    margin-right: 8px;
+  }
+
+  h3 {
+    font-family: 'Noto Serif SC', 'STSong', serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 18px;
+    margin-bottom: 8px;
+    padding-left: 10px;
+    border-left: 3px solid var(--accent-light);
+  }
+
+  h3 .era-tag {
+    display: inline-block;
+    font-size: 9pt;
+    font-weight: 600;
+    background: var(--accent);
+    color: white;
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  h3 .exam-tag {
+    display: inline-block;
+    font-size: 8pt;
+    font-weight: 600;
+    background: var(--exam-tag);
+    color: white;
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--ink-light);
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+
+  p { margin-bottom: 10px; text-align: justify; font-size: 10.5pt; }
+
+  /* ---- Key point markers ---- */
+  .key-point {
+    background: var(--highlight);
+    border-left: 4px solid var(--accent);
+    padding: 8px 14px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 10.5pt;
+  }
+
+  .key-point strong { color: var(--accent); }
+
+  .exam-highlight {
+    background: #fdf2f0;
+    border-left: 4px solid var(--exam-tag);
+    padding: 8px 14px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 10.5pt;
+  }
+
+  .exam-highlight::before {
+    content: "📝 考点提示 ";
+    font-weight: 700;
+    color: var(--exam-tag);
+    font-size: 9.5pt;
+  }
+
+  /* ---- Tables ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 9.5pt;
+    line-height: 1.6;
+  }
+
+  th {
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+    padding: 6px 8px;
+    text-align: center;
+    font-size: 9.5pt;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td { background: var(--table-stripe); }
+
+  .table-caption {
+    font-size: 9pt;
+    color: var(--ink-light);
+    text-align: center;
+    margin-top: -8px;
+    margin-bottom: 12px;
+  }
+
+  /* ---- Timeline ---- */
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 14px 0;
+    padding: 10px 0;
+    position: relative;
+  }
+
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--timeline-bar);
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    padding: 5px 0;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 76px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    border: 2px solid var(--paper);
+    z-index: 1;
+  }
+
+  .timeline-year {
+    text-align: right;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 9.5pt;
+    padding-right: 4px;
+  }
+
+  .timeline-content {
+    font-size: 9.5pt;
+    color: var(--ink);
+    padding-left: 4px;
+  }
+
+  .timeline-content strong { color: var(--ink); }
+
+  /* ---- Culture card ---- */
+  .culture-card {
+    background: #f8f4ed;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+  }
+
+  .culture-card .card-header {
+    font-weight: 700;
+    font-size: 11pt;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .culture-card .card-header .date {
+    font-weight: 400;
+    font-size: 9.5pt;
+    color: var(--ink-light);
+    margin-left: 8px;
+  }
+
+  .culture-card .attr-grid {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 2px 8px;
+    font-size: 9.5pt;
+    line-height: 1.7;
+  }
+
+  .culture-card .attr-label {
+    color: var(--ink-light);
+    font-weight: 600;
+  }
+
+  /* ---- Lists ---- */
+  ul, ol {
+    margin: 6px 0 10px 20px;
+    font-size: 10.5pt;
+  }
+
+  li { margin-bottom: 3px; }
+
+  /* ---- Source citation ---- */
+  .source-cite {
+    font-size: 8pt;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-left: 3px;
+  }
+
+  /* ---- Marker for key exam terms ---- */
+  .term {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* ---- Footer note ---- */
+  .page-footer {
+    margin-top: 24px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 8pt;
+    color: var(--ink-light);
+    text-align: center;
+  }
+
+  /* ---- Print helper ---- */
+  .no-break { page-break-inside: avoid; }
+
+  /* ---- Region tabs for comparison ---- */
+  .region-summary {
+    margin: 16px 0;
+  }
+
+  .region-summary .region-title {
+    font-size: 12pt;
+    font-weight: 700;
+    color: white;
+    background: var(--accent);
+    padding: 4px 12px;
+    border-radius: 4px 4px 0 0;
+    letter-spacing: 1px;
+  }
+
+  .region-summary .region-body {
+    background: #f8f4ed;
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 10px 14px;
+    border-radius: 0 0 4px 4px;
+  }
+
+  /* ---- Data source tags ---- */
+  .data-source {
+    display: inline-block;
+    font-size: 7.5pt;
+    background: #e8e0d4;
+    color: #5a4a32;
+    padding: 0 5px;
+    border-radius: 2px;
+    margin: 0 2px;
+  }
+
+  /* TOC */
+  .toc { margin: 16px 0; }
+  .toc a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 10.5pt;
+    display: block;
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--border);
+  }
+  .toc a:hover { color: var(--ink); }
+  .toc .toc-l2 { padding-left: 20px; font-size: 10pt; }
+  .toc .toc-l3 { padding-left: 36px; font-size: 9.5pt; color: var(--ink-light); }
+
+  /* Culture evolution arrow */
+  .evolve-arrow {
+    text-align: center;
+    color: var(--accent-light);
+    font-size: 14pt;
+    margin: 2px 0;
+    letter-spacing: 6px;
+  }
+
+  /* Compact horizontal list for related cultures */
+  .culture-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 2px;
+    margin: 6px 0;
+    font-size: 10pt;
+  }
+  .culture-chain .chain-item {
+    background: var(--highlight);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .culture-chain .chain-arrow {
+    color: var(--accent-light);
+    font-size: 12pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1: COVER ============ -->
+<div class="page">
+  <h1>中国石器时代与<br>史前考古学文化</h1>
+  <div class="subtitle">考研复习资料 · 考古学通论专题整理</div>
+
+  <div style="text-align:center; margin: 24px 0 16px 0;">
+    <span style="display:inline-block; background:var(--accent); color:white; padding:4px 20px; border-radius:4px; font-size:11pt; letter-spacing:2px;">
+      涵盖旧石器时代 · 新石器时代 · 六大区系
+    </span>
+  </div>
+
+  <div style="margin: 20px 0; padding: 14px; background:#f8f4ed; border-radius:6px; border:1px solid var(--border);">
+    <p style="font-weight:600; font-size:11pt; text-align:center; margin-bottom:10px;">📖 编写说明</p>
+    <p style="font-size:9.5pt;">
+      本资料基于文件夹内全部考古考研素材整理，出处标记说明如下：
+    </p>
+    <div style="display:flex; flex-wrap:wrap; gap:4px 10px; margin-top:6px; font-size:9pt;">
+      <span><span class="data-source">[综述]</span> 《史前各文化类型综述》</span>
+      <span><span class="data-source">[旧石器]</span> 《旧石器人及文化》</span>
+      <span><span class="data-source">[对比:XX]</span> 新石器区域对比文档</span>
+      <span><span class="data-source">[真题]</span> 各校真题与参考答案</span>
+      <span><span class="data-source">[西大]</span> 西北大学史前考古思考题</span>
+      <span><span class="data-source">[十八讲]</span> 考古学十八讲题目总结</span>
+      <span><span class="data-source">[题库]</span> 考古、文物名词解释+简答+论述</span>
+      <span><span class="data-source">[通论]</span> 考古学通论课件/要点总结</span>
+    </div>
+    <p style="font-size:9pt; margin-top:8px; color:var(--ink-light);">
+      📝 标 <span class="exam-tag" style="font-size:7pt;">高频考点</span> 的为多所学校反复考查内容。
+    </p>
+  </div>
+
+  <div class="toc">
+    <p style="font-weight:700; font-size:10pt; margin-bottom:6px; color:var(--accent);">目 录</p>
+    <a href="#s1">一、史前考古学基本框架</a>
+    <a href="#s2" class="toc-l2">1.1 分期体系</a>
+    <a href="#s3" class="toc-l2">1.2 区系类型学说</a>
+    <a href="#s4">二、旧石器时代</a>
+    <a href="#s5" class="toc-l2">2.1 早期（直立人）</a>
+    <a href="#s6" class="toc-l2">2.2 中期（早期智人）</a>
+    <a href="#s7" class="toc-l2">2.3 晚期（晚期智人）</a>
+    <a href="#s8" class="toc-l2">2.4 两大石器传统</a>
+    <a href="#s9">三、新石器时代</a>
+    <a href="#s10" class="toc-l2">3.1 年代框架</a>
+    <a href="#s11" class="toc-l2">3.2 中原地区（华渭文化区）</a>
+    <a href="#s12" class="toc-l2">3.3 海岱地区（泰沂文化区）</a>
+    <a href="#s13" class="toc-l2">3.4 燕辽地区（北方）</a>
+    <a href="#s14" class="toc-l2">3.5 甘青地区</a>
+    <a href="#s15" class="toc-l2">3.6 长江中游（西南文化区）</a>
+    <a href="#s16" class="toc-l2">3.7 长江下游（东南文化区）</a>
+    <a href="#s17" class="toc-l2">3.8 其他地区</a>
+    <a href="#s18">四、关键专题</a>
+    <a href="#s19" class="toc-l2">4.1 人类起源</a>
+    <a href="#s20" class="toc-l2">4.2 农业起源</a>
+    <a href="#s21" class="toc-l2">4.3 文明起源</a>
+    <a href="#s22">五、高频考点速览</a>
+  </div>
+
+  <div class="page-footer">
+    资料整理自本地考古考研素材库 · 2026年5月
+  </div>
+</div>
+
+<!-- ============ PAGE 2: 基本框架 + 旧石器时代开始 ============ -->
+<div class="page">
+  <h2 id="s1"><span class="section-num">一</span>史前考古学基本框架</h2>
+
+  <h3 id="s2">1.1 分期体系 <span class="era-tag">必记</span></h3>
+
+  <table>
+    <tr><th width="18%">时代</th><th width="40%">起止年代</th><th width="42%">核心特征</th></tr>
+    <tr><td><strong>旧石器时代</strong></td><td>约200万年前 — 1万年前</td><td>打制石器；采集狩猎；用火（晚期人工取火）</td></tr>
+    <tr><td><strong>中石器时代</strong></td><td>约1.2万 — 8000年前</td><td>细石器；弓箭发明；狗驯养 <span class="source-cite">[综述]</span></td></tr>
+    <tr><td><strong>新石器时代</strong></td><td>约1万 — 4000年前</td><td>磨制石器；陶器；农业；定居聚落</td></tr>
+    <tr><td><strong>铜石并用</strong></td><td>约4000年前</td><td>红铜器出现，但石器仍为主</td></tr>
+    <tr><td><strong>青铜时代</strong></td><td>约4000年前始</td><td>青铜冶炼，进入文明时代</td></tr>
+  </table>
+  <div class="table-caption">来源：汤姆森"三期说"（1836）→ 卢伯克细分旧/新石器时代（1865）→ 布朗提出中石器时代（1892）→ 基耶里克提出铜石并用时代（1877） <span class="source-cite">[综述]</span></div>
+
+  <div class="key-point">
+    <strong>新石器时代判断标准（四要素）：</strong><br>
+    ① 磨制石器的出现 ② 陶器的发明使用 ③ 原始农业和畜牧业的产生 ④ 长期定居的聚落<br>
+    <span style="font-size:9.5pt; color:var(--ink-light);">注意：打制/磨制石器不是划分旧/新石器时代的唯一标准——磨制石器在旧石器晚期已萌芽，而有些新石器文化仍大量使用打制石器。</span>
+  </div>
+
+  <p><strong>新石器时代分期</strong>（中国）：前仰韶时代（约10000—5000BC）→ 仰韶时代（约5000—3000BC）→ 龙山时代（约3000—2000BC） <span class="source-cite">[综述]</span></p>
+
+  <h3 id="s3">1.2 区系类型学说 <span class="exam-tag">高频考点</span></h3>
+
+  <p>苏秉琦（1909—1997）在20世纪70、80年代系统阐述。从全国范围看，可将考古学文化分为<strong>六大区系</strong>：</p>
+  <ol>
+    <li><strong>北方</strong>：以燕山南北长城地带为重心的北方</li>
+    <li><strong>东方</strong>：以山东为中心的东方（泰沂文化区）</li>
+    <li><strong>中原</strong>：以关中、晋南、豫西为中心的中原（华渭文化区）</li>
+    <li><strong>东南</strong>：以环太湖为中心的东南部（东南文化区）</li>
+    <li><strong>西南</strong>：以环洞庭湖与四川盆地为中心的西南部（西南文化区）</li>
+    <li><strong>南方</strong>：以鄱阳湖—珠三角一线为中轴的南方</li>
+  </ol>
+  <p>区系类型学说的提出，打破了"中原中心论"，确立了各区域文化多元发展和相互影响的认识框架。 <span class="source-cite">[综述][通论]</span></p>
+
+  <h2 id="s4"><span class="section-num">二</span>旧石器时代</h2>
+
+  <div class="key-point">
+    <strong>旧石器时代总述：</strong><br>
+    <strong>古人类特征</strong>：经历了从直立人（晚期猿人）到早期智人（古人）再到晚期智人（新人）的体质进化。直立人脑量800—1200ml，眉脊粗壮、头骨低平、骨壁厚；早期智人脑量增至1300ml以上，骨壁变薄，吻部后缩；晚期智人达到解剖结构上的现代人（脑量1300—1500ml），人种开始分化，蒙古人种特征形成。<br>
+    <strong>器物特征</strong>：打制石器技术从早期的锤击法、碰砧法、砸击法，发展到中期的摔击法，再到晚期的间接打击法和压制法。旧石器时代早期存在华北两大传统——匼河-丁村系（大型石器、碰砧法为主）和周口店-峙峪系（小型石器、锤击法为主），至晚期两大传统汇合，细石器工艺兴起。骨角器从简单到精致（骨针），晚期出现大量装饰品和复合工具。<br>
+    <strong>文化面貌</strong>：早期以简单石片工具和砍砸器为主，中期石器类型增多、分工明确（大三棱尖状器、石球等），晚期出现细石器工艺、弓箭、骨针、装饰品和埋葬习俗。用火从利用自然火（元谋人、北京人）发展到人工取火（早期智人阶段）。<br>
+    <strong>社会形态</strong>：从原始群（早期直立人）到血缘家族（北京人阶段），再到氏族制度萌芽（丁村人已有男女分工和族外婚，进入氏族制阶段），至晚期智人阶段（山顶洞人）出现公共墓地和原始宗教信仰。社会单位日趋扩大，人口密度逐渐增加。 <span class="source-cite">[旧石器][综述][真题]</span>
+  </div>
+
+  <h3 id="s5">2.1 旧石器时代早期（直立人阶段，约200万—20万年前）</h3>
+
+  <table>
+    <tr><th width="13%">名称</th><th width="13%">年代</th><th width="20%">发现地点</th><th width="27%">化石特征</th><th width="27%">文化遗存</th></tr>
+    <tr>
+      <td><strong>元谋人</strong><br><span class="exam-tag" style="font-size:7pt;">高频</span></td>
+      <td>距今170万年</td>
+      <td>云南元谋县上那蚌村</td>
+      <td>两枚上内侧门齿（同一青年个体），牙齿粗壮，舌面模式复杂，具明显原始性质</td>
+      <td>7件石制品（脉石英）；大量炭屑与两块烧骨——可能为用火痕迹，把人类用火历史大大提前 <span class="source-cite">[旧石器][真题]</span></td>
+    </tr>
+    <tr>
+      <td><strong>蓝田人</strong></td>
+      <td>距今80—75万年（公王岭）</td>
+      <td>陕西蓝田县公王岭</td>
+      <td>头盖骨、鼻骨、右上颌骨和三颗臼齿。头盖骨低平，眉脊粗壮，骨壁极厚，脑量约780ml，吻部突出，形态比北京人更原始 <span class="source-cite">[旧石器]</span></td>
+      <td>大尖状器、砍砸器、刮削器和石球</td>
+    </tr>
+    <tr>
+      <td><strong>北京人</strong><br><span class="exam-tag" style="font-size:7pt;">高频</span></td>
+      <td>距今70—20万年</td>
+      <td>北京周口店龙骨山</td>
+      <td>40多个个体。脑量平均1043ml；头骨低矮，前额平，骨壁厚（约9.7mm，为现代人两倍）；眉嵴粗壮相连；矢状嵴；有蒙古人种特征 <span class="source-cite">[旧石器][真题]</span></td>
+      <td>大批石器（锤击法为主）；用火遗迹（灰烬层厚达6米）；骨角器。1929年裴文中发掘第一个完整头盖骨 <span class="exam-tag" style="font-size:7pt;">常考</span></td>
+    </tr>
+    <tr>
+      <td><strong>郧县人</strong></td>
+      <td>可能早于北京人</td>
+      <td>湖北郧县龙骨洞</td>
+      <td>1975年发现牙齿化石；2022年发现3号头骨——欧亚内陆同时代最完好的古人类头骨化石</td>
+      <td>打制石核</td>
+    </tr>
+  </table>
+
+  <h3 id="s6">2.2 旧石器时代中期（早期智人阶段，约30万—5万年前）</h3>
+
+  <table>
+    <tr><th width="14%">名称</th><th width="12%">年代</th><th width="18%">地点</th><th width="30%">特征</th><th width="26%">文化遗存</th></tr>
+    <tr><td><strong>大荔人</strong></td><td>18—23万年</td><td>陕西大荔</td><td>较完好头骨（男性青年），脑量1120ml，眉脊粗壮但吻部不突出，介于直立人与早期智人之间——<strong>目前所见最早的早期智人</strong>，填补了古人类学空白 <span class="source-cite">[旧石器][真题]</span></td><td>石制品和哺乳动物化石</td></tr>
+    <tr><td><strong>丁村人</strong><br><span class="exam-tag" style="font-size:7pt;">高频</span></td><td>晚更新世早期</td><td>山西襄汾</td><td>儿童三颗牙齿；门齿舌面有舌面隆突和指状突（不如北京人复杂）。社会形态已进入氏族制阶段，有男女分工和族外婚 <span class="source-cite">[旧石器]</span></td><td>近2000件石制品——<strong>碰砧法、摔击法</strong>为主。典型器物：大三棱尖状器、石球、砍砸器、刮削器。代表华北大型石器传统"匼河-丁村系" <span class="exam-tag" style="font-size:7pt;">考点</span></td></tr>
+    <tr><td><strong>金牛山人</strong></td><td>中更新世（约20万年）</td><td>辽宁营口</td><td>完整头骨+脊椎骨等；眉脊不如北京人粗壮，骨壁较薄——直立人向智人过渡的典型材料 <span class="source-cite">[旧石器]</span></td><td>—</td></tr>
+    <tr><td><strong>许家窑人</strong></td><td>约10万年</td><td>山西阳高/河北阳原</td><td>近20件化石（十多个个体）；头骨壁厚，颅顶较高，吻部不太突出——直立人向智人过渡 <span class="source-cite">[旧石器]</span></td><td>丰富石制品和骨角器</td></tr>
+  </table>
+
+  <h3 id="s7">2.3 旧石器时代晚期（晚期智人/新人阶段，约5万—1万年前）</h3>
+
+  <table>
+    <tr><th width="14%">名称</th><th width="12%">年代</th><th width="18%">地点</th><th width="30%">特征与意义</th><th width="26%">文化成就</th></tr>
+    <tr>
+      <td><strong>山顶洞人</strong><br><span class="exam-tag" style="font-size:7pt;">高频</span></td>
+      <td>距今约1.8万年</td>
+      <td>北京周口店龙骨山山顶</td>
+      <td>8个个体，3具完整头骨：前额高起，脑容量1300—1500ml，下颌突出，有蒙古人种特征。男性身高约1.74m。下室为<strong>中国迄今最早的墓葬</strong>——尸骨周围撒赤铁矿粉，表明原始信仰和灵魂观念 <span class="source-cite">[旧石器][真题]</span></td>
+      <td>骨针（已掌握钻孔、磨制技术）；装饰品（石珠、骨坠、海蚶壳等）；大量野兔和斑鹿骨骼（渔猎为主）；赤铁矿、海蚶壳非周口店所产，说明活动范围广泛</td>
+    </tr>
+    <tr>
+      <td><strong>下川文化</strong><br><span class="exam-tag" style="font-size:7pt;">高频</span></td>
+      <td>2.4万—1.6万年</td>
+      <td>山西沁水下川盆地</td>
+      <td>细石器文化代表。石制品分细石器和粗大石器两类，以细石器为主（黑燧石），使用<strong>间接打击法</strong>修整 <span class="source-cite">[旧石器]</span></td>
+      <td>锥状/柱状/楔状石核；琢背小刀（典型石器）；箭镞、雕刻器、尖状器；粗大有磨盘。<strong>上承峙峪、下开新石器早期细石器工艺先河</strong></td>
+    </tr>
+  </table>
+
+  <h3 id="s8">2.4 华北旧石器文化两大传统 <span class="exam-tag">高频论述</span></h3>
+  <p>美国学者莫维斯提出的"莫维斯线"将旧大陆旧石器时代分为东西两大文化圈。中国华北地区存在<strong>两大传统</strong>：</p>
+  <ul>
+    <li><strong>匼河-丁村系（大型石器传统）</strong>：以大型砍砸器、大三棱尖状器为特色，用碰砧法、摔击法打片，分布以汾河流域为中心，采集经济为主</li>
+    <li><strong>周口店-峙峪系（小型石器传统）</strong>：以小型刮削器、尖状器为特色，用锤击法、砸击法打片，分布以周口店为中心向华北扩展，狩猎经济为主</li>
+  </ul>
+  <p>至旧石器时代晚期，两大传统逐渐汇合，细石器工艺（间接打击法、压制法）兴起，为进入新石器时代奠定技术基础。 <span class="source-cite">[旧石器][综述][真题]</span></p>
+
+  <div class="page-footer">— 第2页 —</div>
+</div>
+
+<!-- ============ PAGE 3-4+ : 新石器时代 ============ -->
+<div class="page">
+  <h2 id="s9"><span class="section-num">三</span>新石器时代</h2>
+  <p>中国新石器时代从地质学上属全新世时期，历史年代约10000BC—2000BC。基本经济特征：由攫取性经济向生产性经济过渡（农业革命），出现原始农业和畜牧业，磨制石器与陶器普遍使用，形成长期定居聚落。 <span class="source-cite">[综述]</span></p>
+
+  <div class="key-point">
+    <strong>新石器时代总述：</strong><br>
+    <strong>经济革命</strong>：实现了从攫取性经济（采集渔猎）到生产性经济（农业畜牧业）的根本转变。黄河流域以粟、黍为主的旱作农业系统（磁山文化炭化粟堆积为最早证据），长江中下游以水稻为主的稻作农业系统（玉蟾岩、彭头山、河姆渡）。"六畜"（猪狗鸡牛羊马）至龙山阶段基本齐备。农业革命使人类从食物采集者变为食物生产者，为定居和文明奠基。<br>
+    <strong>器物特征</strong>：磨制石器从刃部磨整→通体磨光→穿孔技术（对钻→管钻）。陶器从泥片贴筑→泥条盘筑→慢轮修整→快轮拉坯；陶色从红褐（露天烧制）→氧化红陶/渗水灰陶/渗碳黑陶（出现陶窑后）；制法从手制到轮制。玉器工艺从前期简单装饰（兴隆洼玉玦）发展到后期礼器化（红山玉龙、良渚玉琮）。<br>
+    <strong>文化面貌</strong>：从洞穴/巢居到半地穴→地面式→分间式→干栏式建筑，龙山时代出现防御性城堡。聚落规模不断扩大，从数十人的小聚落到数百人的中心聚落。手工业从农业中分离（制陶、治玉、纺织专业化）。埋葬从公共墓地到家族墓地，随葬品从无到有、从少到多、从均衡到悬殊。彩陶（仰韶、马家窑）和玉器（红山、良渚）代表史前艺术的两大高峰。<br>
+    <strong>社会形态</strong>：从母系氏族（前仰韶→仰韶早期，财产按母系继承，妇女厚葬）到父系氏族萌芽（仰韶中晚期，陶祖出现、成年男女合葬）再到父权制确立（龙山时代，殉人、贫富分化、阶级对立），最终走向邦国/古国（良渚、陶寺、石家河）。 <span class="source-cite">[综述][对比:各区域][题库]</span>
+  </div>
+
+  <h3 id="s10">3.1 年代框架与文化序列</h3>
+
+  <table>
+    <tr><th>时代分期</th><th>绝对年代</th><th>社会形态</th><th>标志性变化</th></tr>
+    <tr><td><strong>前仰韶时代早期</strong></td><td>约10000—6000BC</td><td>母系氏族社会</td><td>农业萌芽、陶器出现（玉蟾岩、南庄头、彭头山）</td></tr>
+    <tr><td><strong>前仰韶时代晚期</strong></td><td>约6000—5000BC</td><td>母系氏族繁荣</td><td>裴李岗、磁山、老官台、后李、兴隆洼等文化；粟作与稻作初步发展</td></tr>
+    <tr><td><strong>仰韶时代</strong></td><td>约5000—3000BC</td><td>母系→父系过渡</td><td>彩陶发达；仰韶、大汶口、红山、马家窑、大溪等；晚期出现父系萌芽</td></tr>
+    <tr><td><strong>龙山时代</strong></td><td>约3000—2000BC</td><td>父权制→文明前夕</td><td>灰黑陶、轮制技术、城址、铜器出现、贫富分化、战争频繁</td></tr>
+  </table>
+  <div class="table-caption">注：龙山时代概念由严文明提出，指龙山文化及其相当阶段的文化遗存。 <span class="source-cite">[综述]</span></div>
+
+  <div class="key-point">
+    <strong>新石器时代重要变化线索：</strong><br>
+    石器：打制→局部磨制→通体磨光→穿孔（对钻→管钻）<br>
+    陶器：泥片贴筑→泥条盘筑→慢轮→快轮拉坯<br>
+    陶色：红褐（露天）→氧化红陶/渗水灰陶/渗碳黑陶（出现陶窑后）<br>
+    居住：洞穴→巢居→半地穴→地面式→分间→干栏式<br>
+    社会：母系氏族→父系氏族→贫富分化→阶级→邦国
+  </div>
+
+  <div class="timeline-container">
+    <div class="timeline-item"><span class="timeline-year">10000BC</span><span class="timeline-content">前仰韶早期：玉蟾岩（稻作萌芽）、南庄头（华北最早新石器）</span></div>
+    <div class="timeline-item"><span class="timeline-year">8000BC</span><span class="timeline-content">彭头山文化（稻作）、兴隆洼文化（玉玦）</span></div>
+    <div class="timeline-item"><span class="timeline-year">6000BC</span><span class="timeline-content"><strong>前仰韶晚期</strong>：裴李岗、磁山、老官台、后李</span></div>
+    <div class="timeline-item"><span class="timeline-year">5000BC</span><span class="timeline-content"><strong>仰韶时代</strong>：半坡→庙底沟（彩陶鼎盛）、河姆渡、大溪、红山</span></div>
+    <div class="timeline-item"><span class="timeline-year">4000BC</span><span class="timeline-content">马家窑、大汶口中晚期、崧泽、屈家岭、阿善</span></div>
+    <div class="timeline-item"><span class="timeline-year">3000BC</span><span class="timeline-content"><strong>龙山时代</strong>：龙山（蛋壳陶）、良渚（玉器）、石家河、陶寺、齐家</span></div>
+    <div class="timeline-item"><span class="timeline-year">2000BC</span><span class="timeline-content">进入青铜时代·二里头文化</span></div>
+  </div>
+  <div class="table-caption">新石器时代文化发展主要节点 <span class="source-cite">[综述][对比]</span></div>
+</div>
+
+<!-- ============ PAGE: 中原地区 ============ -->
+<div class="page">
+  <h3 id="s11">3.2 中原地区（华渭文化区）<span class="exam-tag" style="font-size:8pt;">核心必考</span></h3>
+  <p style="font-size:9.5pt; color:var(--ink-light);">以关中（陕西）、晋南、豫西为中心，苏秉琦六大区系中的"中原"。文化谱系最完整，是探索夏文化起源的关键区域。 <span class="source-cite">[综述]</span></p>
+
+  <div class="culture-chain">
+    <span class="chain-item">老官台</span><span class="chain-arrow">→</span>
+    <span class="chain-item">半坡</span><span class="chain-arrow">→</span>
+    <span class="chain-item">庙底沟</span><span class="chain-arrow">→</span>
+    <span class="chain-item">半坡四期</span><span class="chain-arrow">→</span>
+    <span class="chain-item">泉护二期</span><span class="chain-arrow">→</span>
+    <span class="chain-item">庙底沟二期</span><span class="chain-arrow">→</span>
+    <span class="chain-item">三里桥/客省庄/陶寺</span>
+  </div>
+
+  <!-- 前仰韶 -->
+  <h4>陕晋豫地区 — 前仰韶时代</h4>
+  <div class="culture-card no-break">
+    <div class="card-header">老官台文化 <span class="date">约5800—5000BC | 陕西华县老官台遗址得名</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">年代</span><span>约5800—5000BC</span>
+      <span class="attr-label">地点</span><span>陕西关中、甘肃东部</span>
+      <span class="attr-label">陶器</span><span>夹砂、泥质红褐陶；器形简单（钵、罐为主）；三足器较多</span>
+      <span class="attr-label">石器</span><span>打制和磨制并存</span>
+      <span class="attr-label">房屋</span><span>半地穴式</span>
+      <span class="attr-label">墓葬</span><span>成人土坑竖穴、仰身直肢；小孩瓮棺葬</span>
+      <span class="attr-label">经济</span><span>原始农业萌芽，采集渔猎仍占重要地位</span>
+      <span class="attr-label">社会</span><span>母系氏族社会</span>
+    </div>
+  </div>
+
+  <h4>郑州伊洛地区 — 前仰韶时代</h4>
+  <div class="culture-card no-break">
+    <div class="card-header">裴李岗文化 <span class="date">约5500—5000BC | 河南新郑裴李岗</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">年代</span><span>约5500—5000BC</span>
+      <span class="attr-label">地点</span><span>河南中部，郑州以南</span>
+      <span class="attr-label">陶器</span><span>泥质红陶为主；泥条盘筑；小口双耳壶、圜底器</span>
+      <span class="attr-label">石器</span><span>石磨盘磨棒（贾湖）——谷物加工工具</span>
+      <span class="attr-label">房屋</span><span>半地穴式</span>
+      <span class="attr-label">墓葬</span><span>单人仰直为主；出现壁龛（密县莪沟北岗）；有叉形器（祭祀用）</span>
+      <span class="attr-label">经济</span><span>农业已较发达，饲养业开始，男女已有初步分工</span>
+      <span class="attr-label">特色</span><span>舞阳贾湖：骨笛（我国最早的乐器）、刻符甲骨（最早文字雏形）</span>
+    </div>
+  </div>
+
+  <h4>豫北冀南 — 前仰韶时代</h4>
+  <div class="culture-card no-break">
+    <div class="card-header">磁山文化 <span class="date">约7000—5000BC | 河北武安磁山</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">年代</span><span>约7000—5000BC</span>
+      <span class="attr-label">地点</span><span>河北南部、河南北部</span>
+      <span class="attr-label">陶器</span><span>夹砂红陶为主；三足钵、小口双耳壶、圈足罐、盂、支架</span>
+      <span class="attr-label">石器</span><span>磨制为主，石斧最多，另有石铲、凿、磨盘磨棒</span>
+      <span class="attr-label">房屋</span><span>半地穴式</span>
+      <span class="attr-label">关键发现</span><span>窖穴中堆积很厚的炭化粟（<strong>我国最早的粟作农业遗存</strong>之一）；猪狗鸡骨骼</span>
+      <span class="attr-label">经济</span><span>粟作农业为主，兼营畜牧（猪狗鸡）和渔猎采集</span>
+      <span class="attr-label">意义</span><span>与裴李岗、老官台年代相当，共同构成中原前仰韶文化面貌</span>
+    </div>
+  </div>
+
+  <!-- 仰韶时代 -->
+  <h4>陕晋豫地区 — 仰韶时代</h4>
+  <div class="culture-card no-break">
+    <div class="card-header">半坡文化 <span class="date">约4800—4000BC | 西安半坡遗址得名</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">年代</span><span>约4800—4000BC</span>
+      <span class="attr-label">地点</span><span>关中地区为中心</span>
+      <span class="attr-label">陶器</span><span>夹砂、泥质红陶为主；小口尖底瓶、蒜头细颈瓶、红顶碗；有刻划符号</span>
+      <span class="attr-label">石器</span><span>磨制石器为主，有石斧、石铲等</span>
+      <span class="attr-label">房屋</span><span>半地穴式，出现木骨泥墙建筑；陶窑为横穴窑</span>
+      <span class="attr-label">墓葬</span><span>多人二次葬流行；成年女子与小孩合葬、<strong>妇女厚葬、女孩厚葬</strong>——母权制特征</span>
+      <span class="attr-label">经济</span><span>磨制石器为主；炭化谷粒；农业较低级，渔猎采集为主；男渔猎女采集</span>
+      <span class="attr-label">社会</span><span>家族、氏族、部落三级组织，财产按母系继承——<strong>发达的母系氏族阶段（母权制）</strong></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">庙底沟文化 <span class="date">约4000—3500BC | 河南陕县庙底沟</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">年代</span><span>约4000—3500BC</span>
+      <span class="attr-label">地点</span><span>豫西、晋南、关中</span>
+      <span class="attr-label">陶器</span><span>红陶为主；<strong>彩陶数量较多</strong>（花瓣纹、鸟纹等）；典型器物：小口尖底瓶、曲腹盆、灶、釜</span>
+      <span class="attr-label">石器</span><span>磨制石器为主</span>
+      <span class="attr-label">房屋</span><span>出现柱础、开始分间</span>
+      <span class="attr-label">墓葬</span><span>零星分布，多单人仰直；出现被遗弃的尸体（不同阶层萌芽）；发现<strong>陶祖</strong>——父系氏族萌芽</span>
+      <span class="attr-label">经济</span><span>粟作农业为主，渔猎采集为补充</span>
+      <span class="attr-label">意义</span><span>庙底沟文化彩陶的分布范围极广，影响所及可达甘青、长江流域，被认为是早期华夏文明形成的核心推动力之一 <span class="source-cite">[综述]</span></span>
+    </div>
+  </div>
+
+  <!-- 龙山时代 -->
+  <h4>陕晋豫地区 — 龙山时代</h4>
+  <div class="culture-card no-break">
+    <div class="card-header">庙底沟二期文化 <span class="date">约3000—2500BC</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">陶器</span><span>灰陶为主；<strong>斝</strong>（中原最早袋足炊器）；弧线三角纹</span>
+      <span class="attr-label">工具</span><span>半月形穿孔石刀、双齿木耒</span>
+      <span class="attr-label">社会</span><span>废弃灰坑埋人现象（社会分层）；发现陶祖</span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">陶寺文化 <span class="date">约2500—1900BC | 山西襄汾陶寺</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">关键发现</span><span><strong>中国史前最大城址</strong>；发现大型圆体夯土建筑（最早期观象台？）；复合范铸红铜制品</span>
+      <span class="attr-label">陶器</span><span>灰陶为主；釜灶、盆形斝；龙纹木盘、乐器</span>
+      <span class="attr-label">墓葬</span><span>大型墓均为男性，随葬品丰富；贫富分化明显，可能已产生阶层</span>
+      <span class="attr-label">意义</span><span>水井标志人类居住可自主选择；陶寺文化与传说中的"尧都"关系密切，是探索夏文化的重要对象</span>
+    </div>
+  </div>
+
+  <div class="exam-highlight">
+    <strong>半坡→庙底沟→庙底沟二期→陶寺</strong> 这条线是中原地区从母系氏族→父系萌芽→贫富分化→早期国家的完整演进路径。对比记忆大汶口→龙山（海岱地区）的平行发展。 <span class="source-cite">[综述][西大]</span>
+  </div>
+
+  <div class="page-footer">— 中原地区 / 华渭文化区 —</div>
+</div>
+
+<!-- ============ PAGE: 海岱 + 燕辽 ============ -->
+<div class="page">
+  <h3 id="s12">3.3 海岱地区（泰沂文化区）<span class="exam-tag" style="font-size:8pt;">高频</span></h3>
+  <p style="font-size:9.5pt; color:var(--ink-light);">以山东为中心，包括苏北、皖北部分地区。陶器演变序列清晰，是与中原并行的另一重要文化区。 <span class="source-cite">[综述]</span></p>
+
+  <div class="culture-chain">
+    <span class="chain-item">后李</span><span class="chain-arrow">→</span>
+    <span class="chain-item">北辛</span><span class="chain-arrow">→</span>
+    <span class="chain-item">大汶口</span><span class="chain-arrow">→</span>
+    <span class="chain-item">龙山（山东）</span>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">后李文化 <span class="date">约6000—5500BC | 淄博后李庄</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">年代</span><span>约6000—5500BC</span>
+      <span class="attr-label">地点</span><span>山东淄博一带</span>
+      <span class="attr-label">陶器</span><span>夹砂红褐陶；圜底器为主（深腹圜底釜、陶支脚）；不见三足器 <span class="source-cite">[对比:海岱]</span></span>
+      <span class="attr-label">石器</span><span>打制、磨制并存</span>
+      <span class="attr-label">房屋</span><span>半地穴式</span>
+      <span class="attr-label">墓葬</span><span>侧室墓为特色；随葬品少</span>
+      <span class="attr-label">经济</span><span>原始农业萌芽，渔猎采集为主</span>
+      <span class="attr-label">社会</span><span>母系氏族社会</span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">北辛文化 <span class="date">约5000BC | 山东滕县北辛</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">年代</span><span>约5000BC</span>
+      <span class="attr-label">地点</span><span>山东南部</span>
+      <span class="attr-label">陶器</span><span>夹砂泥质陶为主；三足钵、小口双耳壶、鼎类器物</span>
+      <span class="attr-label">石器</span><span>磨盘磨棒（粮食加工工具）、刀、镰（收割工具）</span>
+      <span class="attr-label">房屋</span><span>半地穴式</span>
+      <span class="attr-label">墓葬</span><span>土坑竖穴墓</span>
+      <span class="attr-label">经济</span><span>粟作农业为主，饲养家畜，渔猎采集仍占相当比重</span>
+      <span class="attr-label">社会</span><span>母系氏族社会</span>
+      <span class="attr-label">意义</span><span>大汶口文化的直接前身</span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">大汶口文化 <span class="date">约4000—2600BC | 1959年发现，泰安大汶口</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">分期</span><span>三期八段：刘林期（≈庙底沟）→ 花厅期（≈半坡四期）→ 大汶口期（≈泉护二期到庙二） <span class="source-cite">[综述]</span></span>
+      <span class="attr-label">陶器</span><span>红陶为主；觚形杯、豆、鬶、罐形鼎、釜形鼎、大口尊——有明显演变关系 <span class="exam-tag" style="font-size:7pt;">常考器物演变</span></span>
+      <span class="attr-label">墓葬</span><span><strong>枕骨人工变形、拔除上侧门齿</strong>（特征性习俗）<br>中期出现一对成年男女合葬（男左女右、女性侧身屈肢面向男性）<br>以猪下颌骨/猪头随葬体现财富多寡 <span class="source-cite">[对比:海岱]</span></span>
+      <span class="attr-label">经济</span><span>粟作农业为主，家畜饲养发达（猪狗牛？）；獐牙勾形器（制骨业代表）</span>
+      <span class="attr-label">文字</span><span>晚期出现刻划符号（意符刻纹）</span>
+      <span class="attr-label">社会</span><span>分层夯筑（中国建筑技术首创）；晚期出现防御性城堡（西康留、王家庄）</span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">龙山文化（山东龙山）<span class="date">约2400—2000BC | 1928年发现于城子崖</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">陶器</span><span><strong>黑陶为主，轮制技术极高</strong>；"鬼脸式"鼎足、<strong>蛋壳陶高柄杯</strong>（史前制陶顶峰）、白陶鬶、甗</span>
+      <span class="attr-label">铜器</span><span>三里河出土黄铜锥形器；栖霞杨家圈、尧王城也发现铜器</span>
+      <span class="attr-label">墓葬</span><span>出现重椁木棺（临朐朱封）；枕骨变形、拔牙等大汶口遗风延续；猪下颌骨随葬习俗延续</span>
+      <span class="attr-label">城址</span><span>边线王、丁公、城子崖等——城堡增多，战争频繁</span>
+      <span class="attr-label">经济</span><span>玉制礼器生产已专业化；挖基筑墙技术普遍</span>
+    </div>
+  </div>
+
+  <h3 id="s13">3.4 燕辽地区（北方）<span class="exam-tag" style="font-size:8pt;">高频</span></h3>
+  <p style="font-size:9.5pt; color:var(--ink-light);">以大凌河、西辽河、西溂木伦河流域为中心。玉器传统发达，祭坛、神庙等礼仪性建筑最早在此出现。 <span class="source-cite">[综述][对比:燕辽]</span></p>
+
+  <div class="culture-chain">
+    <span class="chain-item">兴隆洼</span><span class="chain-arrow">→</span>
+    <span class="chain-item">赵宝沟</span><span class="chain-arrow">→</span>
+    <span class="chain-item">红山</span><span class="chain-arrow">→</span>
+    <span class="chain-item">小河沿</span>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">兴隆洼文化 <span class="date">约8000—7300年前 | 内蒙古敖汉旗兴隆洼</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">年代</span><span>约8000—7300年前</span>
+      <span class="attr-label">地点</span><span>辽西、内蒙古东南部</span>
+      <span class="attr-label">陶器</span><span>夹砂陶、火候不高；压印纹、附加堆纹；罐、钵</span>
+      <span class="attr-label">石器</span><span>打制石器为主（石铲、石锄），打制磨制琢制并存</span>
+      <span class="attr-label">房屋</span><span>半地穴式圆角方形，房中间有灶，周围有窖穴</span>
+      <span class="attr-label">墓葬</span><span><strong>居室葬</strong>（墓在房内一侧），单人仰直，随葬品数量不等</span>
+      <span class="attr-label">经济</span><span>采集渔猎为主，原始农业萌芽</span>
+      <span class="attr-label">特色</span><span><strong>中国最早的玉器</strong>——玉玦、玉璜、玉坠（佩戴用）<span class="source-cite">[对比:燕辽]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">红山文化 <span class="date">约6700—5300年前 | 赤峰红山后</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">坛庙冢</span><span><strong>喀左东山嘴祭坛</strong>（石砌圆圈台址+方形基址+裸体孕妇塑像）<br><strong>牛河梁女神庙</strong>（多室半地穴建筑，出土玉睛泥塑人面像，五六个个体多属女性——规格最高祭祀址）<br><strong>积石冢</strong>（中心大墓+周围小墓）<span class="source-cite">[对比:燕辽]</span></span>
+      <span class="attr-label">玉器</span><span><strong>玉龙、玉猪龙、勾云形佩、兽面玉牌、玉龟、玉凤</strong>——红山玉器代表中国史前玉文化的第一个高峰</span>
+      <span class="attr-label">墓葬</span><span>石棺墓；积石冢；仰身直肢为主；随葬玉器多见</span>
+      <span class="attr-label">经济</span><span>兼有农业和渔猎；陶器有之字形压印纹和彩陶</span>
+      <span class="attr-label">意义</span><span>红山文化晚期已出现<strong>神权与军权合一</strong>的早期复杂社会，是中华文明起源多元一体格局的重要一环</span>
+    </div>
+  </div>
+
+  <div class="exam-highlight">
+    <strong>红山文化的"坛庙冢"体系</strong>（东山嘴祭坛+牛河梁女神庙+积石冢）是高频考点。注意与良渚的"祭坛+高台墓地"对比记忆。<br>
+    <strong>对比要点</strong>：红山以玉龙、玉猪龙为代表（北方玉文化），良渚以玉琮、玉璧、玉钺、神人兽面纹为代表（南方玉文化）。二者均为文明起源的关键区域。 <span class="source-cite">[综述][真题]</span>
+  </div>
+
+  <div class="page-footer">— 海岱地区 / 燕辽地区 —</div>
+</div>
+
+<!-- ============ PAGE: 甘青 + 长江中游 + 长江下游 ============ -->
+<div class="page">
+  <h3 id="s14">3.5 甘青地区 <span class="exam-tag" style="font-size:8pt;">常考</span></h3>
+  <p style="font-size:9.5pt; color:var(--ink-light);">以甘肃、青海为中心。以发达的彩陶文化著称，马家窑文化彩陶达到中国史前彩陶的顶峰。 <span class="source-cite">[综述][对比:西北]</span></p>
+
+  <div class="culture-chain">
+    <span class="chain-item">石岭下</span><span class="chain-arrow">→</span>
+    <span class="chain-item">马家窑</span><span class="chain-arrow">→</span>
+    <span class="chain-item">半山</span><span class="chain-arrow">→</span>
+    <span class="chain-item">马厂</span><span class="chain-arrow">→</span>
+    <span class="chain-item">齐家</span>
+  </div>
+
+  <table>
+    <tr><th colspan="2">马家窑文化系统 <span class="source-cite">[对比:西北]</span></th></tr>
+    <tr><td width="18%"><strong>石岭下类型</strong></td><td>甘肃东部、渭河上游。红陶为主，彩绘以鸟纹为主。卷沿盆、敛口碗、彩陶壶</td></tr>
+    <tr><td><strong>马家窑类型</strong><br>5300—4600BP</td><td>陇东、陇西、青海东北部。红陶为主，单一黑彩，彩陶多，几何纹+动物纹。盆、钵、罐、壶。甘肃东乡林家有<strong>我国最早的青铜器</strong>（完整铜刀）</td></tr>
+    <tr><td><strong>半山类型</strong><br>4600—4300BP</td><td>彩陶数量极多，网纹、折线三角纹、圆圈纹。侧身屈肢葬多见；成年男女合葬。壶、瓶、盆、杯</td></tr>
+    <tr><td><strong>马厂类型</strong><br>4300—4000BP</td><td>分布扩展至河西走廊到玉门。彩陶纹样繁缛，晚段单一黑彩流行。出现割体葬和殉葬。发现青铜器（铜刀为代表）。贫富差距显著</td></tr>
+  </table>
+
+  <div class="culture-card no-break">
+    <div class="card-header">齐家文化 <span class="date">约4000—3600BP | 甘肃广河齐家坪</span></div>
+    <div class="attr-grid">
+      <span class="attr-label">陶器</span><span>泥质红陶+夹砂红陶，手制为主；双大耳罐、高领双耳罐（典型器物）；彩陶较少</span>
+      <span class="attr-label">铜器</span><span>红铜+青铜（斧、镰、镜、指环）；冷锻与冶铸并存——<strong>齐家坪出土铜镜</strong> <span class="exam-tag" style="font-size:7pt;">考点</span></span>
+      <span class="attr-label">墓葬</span><span><strong>成年男女合葬墓和殉人墓</strong>——男仰身直肢、女侧身屈肢；随葬品多寡悬殊——贫富分化和阶级对立严重；发现石祖（父权崇拜）</span>
+      <span class="attr-label">信仰</span><span>发现卜骨；大何庄有"石圆圈"遗迹四处（可能与祭祀有关）</span>
+      <span class="attr-label">房屋</span><span>方形半地穴式；流行<strong>白灰面</strong>——防潮处理</span>
+    </div>
+  </div>
+
+  <h3 id="s15">3.6 长江中游（西南文化区）<span class="exam-tag" style="font-size:8pt;">高频</span></h3>
+  <p style="font-size:9.5pt; color:var(--ink-light);">以江汉平原、洞庭湖周边为中心。稻作农业发达，城址出现早而密集。 <span class="source-cite">[综述][对比:江汉]</span></p>
+
+  <div class="culture-chain">
+    <span class="chain-item">彭头山</span><span class="chain-arrow">→</span>
+    <span class="chain-item">皂市下层</span><span class="chain-arrow">→</span>
+    <span class="chain-item">大溪</span><span class="chain-arrow">→</span>
+    <span class="chain-item">屈家岭</span><span class="chain-arrow">→</span>
+    <span class="chain-item">石家河</span>
+  </div>
+
+  <table>
+    <tr><th>文化</th><th>年代</th><th>核心特征</th></tr>
+    <tr><td><strong>彭头山文化</strong></td><td>6500—5000BC</td><td>湖南澧县。泥片贴筑陶器（圜底釜、支座）；<strong>大量水稻遗存</strong>——已进入稻作农业诞生阶段 <span class="source-cite">[对比:江汉][综述]</span></td></tr>
+    <tr><td><strong>大溪文化</strong></td><td>4500—3000BC</td><td>红陶为主，圈足器发达；城头山古城（<strong>中国最早古城</strong>之一，大溪文化始建，距今6000年）；东城墙下发现<strong>最早水稻田</strong>；整条鱼随葬的习俗 <span class="source-cite">[综述]</span></td></tr>
+    <tr><td><strong>屈家岭文化</strong></td><td>3000—2500BC</td><td>黑灰陶为主；多城址（城头山、石家河）；渔猎经济为主，兼种粳稻；纺织业发达（大量陶纺轮）</td></tr>
+    <tr><td><strong>石家河文化</strong></td><td>2500—2000BC</td><td>天门石家河城——<strong>长江中游最大史前城址</strong>（120万平方米）；快轮制陶；黑陶白陶红陶；已使用铜器；玉器发达；贫富分化严重，可能已进入初期文明社会 <span class="source-cite">[对比:江汉]</span></td></tr>
+  </table>
+
+  <div class="exam-highlight">
+    <strong>城头山古城</strong>（湖南澧县）：历经大溪→屈家岭→石家河，四期筑城，距今6000年始建。发现距今6500年的稻田和配套灌溉设施、大型祭坛、500多座屈家岭墓地。是探索早期城市和国家起源的关键遗址。 <span class="source-cite">[综述][对比:江汉]</span>
+  </div>
+
+  <h3 id="s16">3.7 长江下游（东南文化区）<span class="exam-tag" style="font-size:8pt;">高频</span></h3>
+  <p style="font-size:9.5pt; color:var(--ink-light);">以环太湖为中心，宁绍地区为延伸。稻作农业、玉器、干栏式建筑为突出特征。 <span class="source-cite">[综述][对比:太湖]</span></p>
+
+  <div style="display:flex; gap:16px; flex-wrap:wrap;">
+    <div style="flex:1; min-width:200px;">
+      <p style="font-weight:600; font-size:10pt;">宁绍地区</p>
+      <div class="culture-chain" style="gap:2px;">
+        <span class="chain-item">河姆渡</span>
+      </div>
+      <div class="culture-card no-break" style="margin-top:4px;">
+        <div class="card-header">河姆渡文化 <span class="date">5000—3500BC | 浙江余姚</span></div>
+        <div class="attr-grid">
+          <span class="attr-label">关键</span><span>夹炭黑陶；<strong>腰檐釜</strong>和支座；象牙碟形器<br><strong>骨耜</strong>和籼稻遗迹——发达的稻作农业<br><strong>干栏式建筑</strong>及榫卯构件——南方代表性建筑<br>中国最早水井；最早生漆使用<br>田螺山发现木桨、木船、河埠头——水上运输发达</span>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <p style="font-weight:600; font-size:10pt;">太湖流域</p>
+      <div class="culture-chain" style="gap:2px;">
+        <span class="chain-item">马家浜</span><span class="chain-arrow">→</span>
+        <span class="chain-item">崧泽</span><span class="chain-arrow">→</span>
+        <span class="chain-item">良渚</span>
+      </div>
+      <div class="culture-card no-break" style="margin-top:4px;">
+        <div class="card-header">马家浜文化 <span class="date">5000—4000BC | 嘉兴马家浜</span></div>
+        <div class="attr-grid">
+          <span class="attr-label">特征</span><span>红陶为主，红衣陶；腰檐釜、釜形鼎；俯身葬流行；草鞋山出土最早纺织品（葛布）</span>
+        </div>
+      </div>
+      <div class="culture-card no-break">
+        <div class="card-header">崧泽文化 <span class="date">3300—3000BC | 上海青浦</span></div>
+        <div class="attr-grid">
+          <span class="attr-label">特征</span><span>灰陶为主，鼎取代釜；穿孔技术发达；出现成年男女合葬——父系萌芽但有母系遗风；口含玉琀、拔牙习俗</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">良渚文化 <span class="date">3000—2000BC | 浙江余杭良渚 <span class="exam-tag" style="font-size:7pt;">论述高频</span></span></div>
+    <div class="attr-grid">
+      <span class="attr-label">玉器</span><span><strong>中国史前玉器顶峰</strong>：琮、钺、璧、冠状饰、三叉形器<br><strong>神人兽面纹</strong>——良渚特有的微刻图案，线条极细<br>实心钻、管钻、琢钻、减地浅浮雕、透雕、圆雕——手法全面<br>反山墓地"琮王"；瑶山祭坛</span>
+      <span class="attr-label">陶器</span><span>泥质黑灰陶为主，<strong>泥质黑皮陶</strong>最具特色；快轮制陶；鱼鳍足鼎、竖耳壶</span>
+      <span class="attr-label">墓葬</span><span>高台墓地、土坑竖穴、单人仰直；发现棺椁遗迹<br><strong>四级社会分层</strong>：反山/瑶山（玉礼器齐备）→ 寺敦/福泉山（玉器多但精差）→ 少量琮璧 → 仅陶器工具<br>高等级墓出大量玉钺、石钺——<strong>神权与军权合一</strong></span>
+      <span class="attr-label">经济</span><span>水稻（粳稻+籼稻）；猪狗牛家畜；制陶、治玉、漆器、纺织</span>
+      <span class="attr-label">意义</span><span>良渚已形成复杂的等级社会，存在宗教控制系统。陶器上出现刻划符号。玉器上<strong>统一的神人兽面纹</strong>表明存在统一的意识形态。著名学者认为良渚已进入<strong>早期国家阶段</strong>（古国）。</span>
+    </div>
+  </div>
+
+  <div class="page-footer">— 甘青 / 长江中游 / 长江下游 —</div>
+</div>
+
+<!-- ============ PAGE: 其他地区 + 关键专题 ============ -->
+<div class="page">
+  <h3 id="s17">3.8 其他地区</h3>
+
+  <h4>河套地区（仰韶→龙山）</h4>
+  <p>阿善文化（一二三期）→ 老虎山文化/大口一期。阿善三期出现石围墙和石头房子（平地起建），发现文化祭坛遗迹。老虎山文化房屋有白灰面，有石围墙。 <span class="source-cite">[综述]</span></p>
+
+  <h4>四川盆地</h4>
+  <p>营盘山文化（仰韶时代，岷江上游）→ <strong>宝墩文化</strong>（龙山时代，成都平原）。宝墩文化发现多座城址（新津宝墩、温江鱼凫城等，大者60万+㎡，小者10万+㎡），城墙斜坡堆筑、不挖基槽，是三星堆文明的前身。 <span class="source-cite">[对比:其他]</span></p>
+
+  <h4>闽台地区</h4>
+  <p><strong>大坌坑文化</strong>（台湾西海岸+福建沿海，不早于5000BC）→ <strong>昙石山文化</strong>（约3000—2000BC，福建闽侯）。昙石山文化有拔牙习俗、男女合葬，陶器以夹砂灰黄陶为主。 <span class="source-cite">[对比:其他]</span></p>
+
+  <h4>两广地区</h4>
+  <p><strong>甑皮岩遗址</strong>（桂林，洞穴遗址，8000BC前，屈肢蹲葬）→ <strong>石峡文化</strong>（约3000—2000BC，广东曲江）。石峡文化的<strong>二次葬</strong>（有两套随葬品——迁葬来的+新放的）为我国首次发现，尸骨撒朱红粉末。 <span class="source-cite">[综述][对比:其他]</span></p>
+
+  <h2 id="s18"><span class="section-num">四</span>关键专题</h2>
+
+  <h3 id="s19">4.1 人类起源与中国古人类 <span class="exam-tag">高频论述</span></h3>
+
+  <div class="key-point">
+    <strong>人类演化四阶段（必记顺序）：</strong><br>
+    南方古猿（早期猿人，500—150万年前）→ 直立人（晚期猿人，200—20万年前）→ 早期智人（古人，30—5万年前）→ 晚期智人（新人，5万年前至今）
+  </div>
+
+  <table>
+    <tr><th>阶段</th><th>中国代表</th><th>关键特征</th></tr>
+    <tr><td><strong>直立人</strong></td><td>元谋人（170万年）、蓝田人（80—75万年）、北京人（70—20万年）、郧县人</td><td>会使用和保存火；打制石器（锤击法、碰砧法、砸击法）；脑量800—1200ml</td></tr>
+    <tr><td><strong>早期智人</strong></td><td>大荔人（18—23万年，最早）、丁村人、金牛山人、许家窑人、马坝人</td><td>脑量1300ml以上；会人工取火；出现氏族制度萌芽（丁村人）</td></tr>
+    <tr><td><strong>晚期智人</strong></td><td>山顶洞人（1.8万年）、柳江人、资阳人</td><td>解剖结构现代人；人种分化（蒙古人种特征）；埋葬习俗+装饰品+细石器</td></tr>
+  </table>
+
+  <div class="exam-highlight">
+    <strong>中国直立人的来源</strong>：<strong>本土起源说</strong>（元谋170万年、巫山接近200万年，与非洲能人几乎同时）vs <strong>外来说</strong>（非洲是唯一发现南方古猿地区，经喜马拉雅-北部湾通道迁入）。尚无定论。 <span class="source-cite">[真题]</span>
+  </div>
+
+  <div class="exam-highlight">
+    <strong>中国现代智人的起源</strong>：<strong>单中心论/替代论</strong>（现代人起源于非洲，约10万年前扩散替代各地古人类）vs <strong>多中心论/连续演化说</strong>（各人种在直立人阶段已分化，中国学者吴新智指出铲形门齿、矢状嵴等体质特征的连续性）。中国学者多倾向于多中心演化说。 <span class="source-cite">[真题]</span>
+  </div>
+
+  <h3 id="s20">4.2 农业起源</h3>
+  <table>
+    <tr><th>作物</th><th>起源地</th><th>关键遗址/文化</th></tr>
+    <tr><td><strong>粟（Setaria italica）</strong></td><td>黄河流域</td><td>磁山文化（炭化粟堆积）、半坡文化（炭化谷粒）</td></tr>
+    <tr><td><strong>黍</strong></td><td>黄河流域</td><td>与粟共存，北方旱作农业系统</td></tr>
+    <tr><td><strong>水稻（Oryza sativa）</strong></td><td>长江中下游</td><td>玉蟾岩（最早人工栽培稻，8000BC前）、彭头山文化（大量水稻遗存）、河姆渡文化（骨耜+籼稻）、城头山（最早水稻田）</td></tr>
+  </table>
+  <div class="table-caption">中国是世界农业起源中心之一。学术界对中国稻作农业起源地的认识主要有长江中下游说和华南说，目前长江中下游说获更多证据支持。 <span class="source-cite">[综述][西大]</span></div>
+
+  <h3 id="s21">4.3 文明起源 <span class="exam-tag">高频论述</span></h3>
+  <div class="key-point">
+    <strong>文明判断标准：</strong><br>
+    ① 柴尔德"城市革命"四标准：城市、文字、冶炼金属（青铜器）、礼仪性建筑<br>
+    ② 夏鼐三标准：文字、城市、冶炼金属<br>
+    ③ 苏秉琦"古国→方国→帝国"三阶段论
+  </div>
+  <p><strong>中国早期文明的关键考古证据：</strong></p>
+  <ul>
+    <li>最早铜器：甘肃东乡林家马家窑期铜刀（<strong>我国最早青铜器</strong>）、齐家文化铜镜</li>
+    <li>最早古城：城头山（大溪文化，距今6000年）；登封王城岗（龙山时代，可能与"禹都阳城"有关）</li>
+    <li>最早文字萌芽：贾湖刻符甲骨（裴李岗时代）、大汶口/良渚/龙山陶器刻符</li>
+    <li>礼仪中心：红山"坛庙冢"、良渚祭坛+高台墓地、陶寺大型夯土建筑（观象台？）</li>
+  </ul>
+  <p>苏秉琦提出中国文明起源<strong>"满天星斗"说</strong>——多区域并行发展，多元一体，而非单一中心向外扩散。 <span class="source-cite">[综述][通论]</span></p>
+
+  <div class="page-footer">— 其他地区 / 关键专题 —</div>
+</div>
+
+<!-- ============ LAST PAGE: 高频考点速览 ============ -->
+<div class="page">
+  <h2 id="s22"><span class="section-num">五</span>高频考点速览</h2>
+  <p style="font-size:9.5pt; color:var(--ink-light);">以下题目和知识点来自文件夹内各校真题和考研思考题，标注了考查院校。</p>
+
+  <h3>📌 名词解释（常考）</h3>
+  <table>
+    <tr><th width="30%">名词</th><th width="45%">核心要点</th><th width="25%">考查院校示例</th></tr>
+    <tr><td>北京人/北京猿人</td><td>周口店；直立人；70—20万年；脑量1043ml；用火</td><td>多校通用</td></tr>
+    <tr><td>山顶洞人</td><td>晚期智人；1.8万年；最早墓葬+赤铁矿粉；骨针+装饰品</td><td>多校通用</td></tr>
+    <tr><td>下川文化</td><td>细石器文化；2.4—1.6万年；间接打击法；琢背小刀</td><td>西北大学等</td></tr>
+    <tr><td>丁村人</td><td>早期智人；碰砧法；大三棱尖状器；匼河-丁村系</td><td>武汉大学等</td></tr>
+    <tr><td>大荔人</td><td>最早早期智人；18—23万年；直→智过渡</td><td>武汉大学等</td></tr>
+    <tr><td>仰韶文化</td><td>彩陶；半坡→庙底沟；粟作农业；母系氏族</td><td>各校通用</td></tr>
+    <tr><td>龙山文化</td><td>黑陶；蛋壳陶；轮制；城址；父权制</td><td>各校通用</td></tr>
+    <tr><td>红山文化</td><td>坛庙冢；玉龙；牛河梁女神庙；积石冢</td><td>川大、厦大等</td></tr>
+    <tr><td>良渚文化</td><td>玉琮玉璧；神人兽面纹；四级社会分层；反山瑶山</td><td>川大、厦大等</td></tr>
+    <tr><td>马家窑文化</td><td>彩陶顶峰；最早青铜刀；石岭下→马家窑→半山→马厂</td><td>西北大学等</td></tr>
+    <tr><td>齐家文化</td><td>铜镜；男女合葬墓；殉人；白灰面；父权制</td><td>西北大学等</td></tr>
+    <tr><td>屈家岭文化</td><td>黑灰陶；多城址；石家河城；粳稻</td><td>武汉大学等</td></tr>
+    <tr><td>大汶口文化</td><td>拔牙+枕骨变形；猪下颌随葬；男女合葬；刻符</td><td>各校通用</td></tr>
+    <tr><td>区系类型学说</td><td>苏秉琦；六大区系；打破中原中心论</td><td>多校论述</td></tr>
+    <tr><td>陶寺文化</td><td>最大史前城址；观象台；红铜；贫富分化；尧都？</td><td>重点院校</td></tr>
+    <tr><td>南方古猿</td><td>人科最早成员；纤细型=人类祖先；非洲起源</td><td>首师大等</td></tr>
+    <tr><td>现代智人多地区起源说</td><td>吴新智；体质连续性；铲形门齿</td><td>川大2025等</td></tr>
+  </table>
+
+  <h3>📌 简答/论述高频题</h3>
+  <div class="exam-highlight" style="border-left-color:var(--accent);">
+    <strong>核心论述题（反复出现）：</strong>
+  </div>
+  <ol>
+    <li>人类的起源和进化路线（南方古猿→直立人→早期智人→晚期智人）<span style="color:var(--ink-light); font-size:9pt;">——武大2013/2017/2018/2023、浙大2015等</span></li>
+    <li>中国直立人的来源问题（本土说 vs 外来说）<span style="color:var(--ink-light); font-size:9pt;">——西北大学2015</span></li>
+    <li>简述中国现代人（晚期智人）的考古发现 <span style="color:var(--ink-light); font-size:9pt;">——山西大学2025</span></li>
+    <li>新石器时代的判断标准（打/磨制石器是否是唯一标准？） <span style="color:var(--ink-light); font-size:9pt;">——西大思考题</span></li>
+    <li>"龙山时代"成立的条件与意义 <span style="color:var(--ink-light); font-size:9pt;">——严文明提出</span></li>
+    <li>考古学文化"区系类型"学说的形成与发展 <span style="color:var(--ink-light); font-size:9pt;">——苏秉琦</span></li>
+    <li>中国史前农业的发展及特点 <span style="color:var(--ink-light); font-size:9pt;">——粟作/稻作两大系统</span></li>
+    <li>中国史前聚落的发展演变脉络 <span style="color:var(--ink-light); font-size:9pt;">——从姜寨到良渚</span></li>
+    <li>中国史前埋葬制度及其发展演变线索 <span style="color:var(--ink-light); font-size:9pt;">——从公共墓地到贫富分化</span></li>
+    <li>成年男女合葬揭示的社会变革（父权制确立） <span style="color:var(--ink-light); font-size:9pt;">——西大思考题</span></li>
+    <li>中国史前城址的发现及意义 <span style="color:var(--ink-light); font-size:9pt;">——城头山→王城岗→陶寺</span></li>
+    <li>文明要素与文明形成的标准问题 <span style="color:var(--ink-light); font-size:9pt;">——柴尔德 vs 夏鼐 vs 苏秉琦</span></li>
+    <li>从红山/良渚看中国早期文明的特征 <span style="color:var(--ink-light); font-size:9pt;">——神权与军权合一</span></li>
+  </ol>
+
+  <h3>📌 论述题参考答案</h3>
+
+  <div class="exam-highlight" style="border-left-color:var(--green-accent);">
+    <strong>以下为高频论述题的答题框架，按"论点→论据→结论"结构编排。</strong>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">1. 人类的起源和进化路线</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：人类进化历经四个阶段——南方古猿→直立人→早期智人→晚期智人，伴随石器技术和文化的协同进化。<br>
+      <strong>分</strong>：① 南方古猿（500—150万年前），纤细型为人类祖先，能直立行走，非洲唯一发现。② 直立人（200—20万年前），脑量800—1200ml，会用火和打制石器，中国代表元谋人/北京人/蓝田人。③ 早期智人（30—5万年前），脑量1300ml以上，会人工取火，出现氏族萌芽，中国代表大荔人/丁村人/金牛山人。④ 晚期智人（5万年前至今），解剖现代人，人种分化，出现埋葬习俗和艺术，中国代表山顶洞人/柳江人。<br>
+      <strong>总</strong>：中国古人类化石构成了较为完整的演化序列，为多地区起源说提供了重要证据。 <span class="source-cite">[真题]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">2. 中国直立人的来源问题</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：关于中国直立人的来源有本土起源说和外来说两种假说，目前尚无定论。<br>
+      <strong>本土说</strong>：元谋人距今170万年、巫山直立人接近200万年，与非洲能人出现时间几乎一致，表明可能为本土起源。<br>
+      <strong>外来说</strong>：非洲是唯一发现南方古猿化石的地区；华南砾石石器工业与奥杜威文化相似；经喜马拉雅-北部湾通道迁入。<br>
+      <strong>总</strong>：两种假说各有证据但均不充分，需更多考古发现。 <span class="source-cite">[真题][十八讲]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">3. 简述中国现代人（晚期智人）的考古发现</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：中国晚期智人化石丰富，为现代人起源研究提供关键材料。<br>
+      <strong>分</strong>：① 山顶洞人（距今1.8万年），发现最早墓葬和装饰品。② 柳江人，东亚迄今最早晚期智人化石。③ 资阳人。④ 早期智人阶段的重要发现（大荔人、丁村人、金牛山人等）构成从直立人到晚期智人的完整序列。<br>
+      <strong>总</strong>：中国古人类化石序列为多地区起源说提供了连续演化证据。 <span class="source-cite">[真题]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">4. 新石器时代的判断标准（打/磨制石器是否是唯一标准？）</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：新石器时代有四个判断标准——磨制石器、陶器、农业、定居聚落，打制/磨制石器不是唯一标准。<br>
+      <strong>分</strong>：① 磨制石器在旧石器晚期已萌芽（山顶洞人钻孔磨制技术），而新石器早期仍大量使用打制石器。② 陶器是更可靠的标志（贾湖、玉蟾岩）。③ 原始农业的出现才是划时代变革（攫取→生产）。④ 定居聚落反映社会组织的变化。<br>
+      <strong>总</strong>：应综合使用四要素，不可偏废。 <span class="source-cite">[综述][西大]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">5. "龙山时代"成立的条件与意义</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>："龙山时代"由严文明提出，指龙山文化及其相当阶段的文化遗存（约3000—2000BC）。<br>
+      <strong>条件</strong>：① 灰黑陶和轮制技术普及（蛋壳陶为顶峰）。② 铜器出现和金属冶铸萌芽。③ 城址大量出现（王城岗、边线王等），战争频繁。④ 贫富分化和阶级对立明显。⑤ 父权制全面确立。<br>
+      <strong>意义</strong>：标志着中国史前社会从平等氏族向分层社会的质变，是文明起源的前夜。 <span class="source-cite">[综述]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">6. 考古学文化"区系类型"学说的形成与发展</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：苏秉琦在20世纪70—80年代系统阐述，将全国划分为六大区系，打破中原中心论。<br>
+      <strong>形成背景</strong>：此前中国考古学以中原为中心，忽视其他区域。苏秉琦在大量考古发现基础上提炼出区系类型学说。<br>
+      <strong>主要内容</strong>：六大区系——北方、东方、中原、东南、西南、南方。各区系有独立的文化谱系和发展序列，同时存在相互影响。<br>
+      <strong>发展</strong>：后续提出"满天星斗"说——中国文明起源多区域并行发展，多元一体。<br>
+      <strong>意义</strong>：奠定了中国考古学的理论框架，为中华文明多元一体格局提供了理论依据。 <span class="source-cite">[综述][通论]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">7. 中国史前农业的发展及特点</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：中国是独立的世界农业起源中心之一，形成了粟作和稻作两大农业系统。<br>
+      <strong>粟作农业</strong>（黄河流域）：磁山文化炭化粟（最早证据）→半坡文化→龙山时代，工具从石磨盘棒到半月形穿孔石刀。<br>
+      <strong>稻作农业</strong>（长江中下游）：玉蟾岩（最早）→彭头山→河姆渡（骨耜）→城头山水稻田→良渚。<br>
+      <strong>特点</strong>：两大系统并行发展、南北互补；"六畜"至龙山基本齐备；农业工具不断改进（木耒→石铲→石镰→骨耜）；耕作方式从刀耕火种到耜耕再到犁耕。 <span class="source-cite">[综述][西大]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">8. 中国史前聚落的发展演变脉络</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：史前聚落从早期小型临时性到晚期大型中心性演变，反映了社会组织的复杂化。<br>
+      <strong>早期</strong>（前仰韶）：小型聚落，半地穴式房屋，无防御设施，平等社会（兴隆洼、裴李岗）。<br>
+      <strong>中期</strong>（仰韶）：聚落规模扩大，有壕沟环绕，出现中心广场（姜寨），半坡→庙底沟出现分间房屋。<br>
+      <strong>晚期</strong>（龙山时代）：出现防御性城堡（王城岗、边线王），中心聚落与普通聚落分化，陶寺城址达280万㎡。<br>
+      <strong>总</strong>：聚落演变反映了从平等氏族→分层社会→早期国家的社会进化历程。 <span class="source-cite">[综述][西大]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">9. 中国史前埋葬制度及其发展演变线索</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：埋葬制度是社会组织、等级制度和意识形态的缩影，经历了从平等到分层再到分化的过程。<br>
+      <strong>前仰韶</strong>：公共墓地，排列有序，随葬品少且均衡（裴李岗、兴隆洼居室葬）。<br>
+      <strong>仰韶</strong>：出现合葬墓和二次葬（半坡多人二次葬），妇女厚葬反映母权制。庙底沟出现遗弃尸体——阶层萌芽。<br>
+      <strong>龙山</strong>：贫富分化显著——陶寺大型墓随葬丰富而小墓几乎无物；齐家出现殉人和男女合葬（男性本位）；大汶口以猪下颌骨体现财富。<br>
+      <strong>总</strong>：从全社会平等的公共墓地到等级森严的分层墓葬，反映了从氏族社会到阶级社会的过渡。 <span class="source-cite">[综述][西大]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">10. 成年男女合葬揭示的社会变革（父权制确立）</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：成年男女合葬墓的出现标志着父权制的确立和母系氏族的终结。<br>
+      <strong>证据</strong>：大汶口中晚期出现一对成年男女合葬（男左女右，女性侧身屈肢面向男性，随葬品集中于男性一侧）。齐家文化出现一男二女合葬及殉人（男性仰身直肢居本位，女性侧身屈肢）。<br>
+      <strong>解读</strong>：男性主导的个体家庭取代母系大家族；财产和世系按父系继承；女性地位下降；一夫一妻制（或一夫多妻）出现。<br>
+      <strong>同步证据</strong>：陶祖（男性生殖崇拜）出现——庙底沟、半坡四期、客省庄；石祖——齐家文化。<br>
+      <strong>总</strong>：成年男女合葬是父权制确立的考古学标志，反映了社会结构的深刻变革。 <span class="source-cite">[综述][西大]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">11. 中国史前城址的发现及意义</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：史前城址集中出现在龙山时代，标志着防御需求和权力中心的形成。<br>
+      <strong>发现</strong>：最早为城头山古城（大溪文化，距今6000年，湖南澧县）。龙山时代城址大量涌现：王城岗（河南登封，可能与禹都阳城有关）、边线王（山东寿光）、丁公（山东邹平）、城子崖（山东章丘）、孟庄（河南辉县）、石家河（湖北天门，120万㎡，最大）、陶寺（山西襄汾）。<br>
+      <strong>特点</strong>：多位于地势高处或河流附近；城墙为夯筑或堆筑；有城壕设施；城址规模差距大（10万—280万㎡）。<br>
+      <strong>意义</strong>：① 防御性设施反映部落战争频繁。② 筑城需要大规模人力组织——已有权力中心。③ 城址规模差异体现等级分化。④ 城址是早期城市和国家起源的关键标志。 <span class="source-cite">[综述][西大]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">12. 文明要素与文明形成的标准问题</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：关于文明形成标准主要有柴尔德、夏鼐和苏秉琦三套理论。<br>
+      <strong>柴尔德"城市革命"四标准</strong>：城市、文字、冶炼金属（青铜器）、礼仪性建筑。<br>
+      <strong>夏鼐三标准</strong>：文字、城市、冶炼金属（更简洁，适合中国实际）。<br>
+      <strong>苏秉琦三阶段论</strong>：古国→方国→帝国，强调文明演进的过程性而非一蹴而就。<br>
+      <strong>中国考古证据</strong>：最早青铜器（马家窑期铜刀，东乡林家）；最早城市（城头山古城，距今6000年）；最早文字萌芽（贾湖刻符甲骨、大汶口刻符）；礼仪中心（红山坛庙冢、良渚祭坛）。<br>
+      <strong>总</strong>：中国文明起源呈现多元一体格局（"满天星斗"说），各区域进程不同，最终汇聚为华夏文明。 <span class="source-cite">[综述][通论]</span></span>
+    </div>
+  </div>
+
+  <div class="culture-card no-break">
+    <div class="card-header">13. 从红山/良渚看中国早期文明的特征</div>
+    <div class="attr-grid">
+      <span class="attr-label">框架</span><span><strong>总</strong>：红山和良渚是中华文明起源的两大关键区域，分别代表北方和南方早期文明的不同模式。<br>
+      <strong>红山文化</strong>（燕辽地区，6700—5300年前）："坛庙冢"体系（东山嘴祭坛+牛河梁女神庙+积石冢）；玉龙、玉猪龙——早期神权象征；女神庙表明存在统一的宗教体系；积石冢中心大墓与周围小墓反映等级分化。<br>
+      <strong>良渚文化</strong>（太湖流域，5300—4300年前）：以琮、钺、璧为核心的玉礼器系统；神人兽面纹为统一意识形态；四级社会分层（反山/瑶山→寺敦/福泉山→普通→贫民）；玉钺和石钺表明神权与军权合一。<br>
+      <strong>共同特征</strong>：神权与军权合一；大型礼仪性建筑；统一的意识形态（红山玉龙 vs 良渚神人兽面纹）；明显的社会分层和等级制度；手工业专门化。<br>
+      <strong>差异</strong>：红山以祭祀性建筑为核心（女神庙），良渚以高台墓地和玉殓葬为核心；红山玉器以动物造型为主（龙、龟），良渚以几何造型为主（琮、璧）。<br>
+      <strong>总</strong>：红山和良渚已进入"古国"阶段——高于部落的、稳定的、独立的政治实体，是理解中国文明多元起源的关键。 <span class="source-cite">[综述][对比:燕辽][对比:太湖][真题]</span></span>
+    </div>
+  </div>
+
+  <h3>📌 对比记忆（高频比较题）</h3>
+  <table>
+    <tr><th>比较对象</th><th>核心比较维度</th></tr>
+    <tr><td>半坡文化 vs 庙底沟文化</td><td>陶器特征、社会形态（母系→父系萌芽）、彩陶风格（鱼纹 vs 花瓣纹）</td></tr>
+    <tr><td>大汶口文化 vs 仰韶文化</td><td>海岱 vs 中原 两大文化区同步发展</td></tr>
+    <tr><td>红山文化 vs 良渚文化</td><td>北方玉文化（玉龙）vs 南方玉文化（玉琮）；坛庙冢 vs 高台墓地+祭坛</td></tr>
+    <tr><td>匼河-丁村系 vs 周口店-峙峪系</td><td>大型石器 vs 小型石器；碰砧法 vs 锤击法；采集 vs 狩猎</td></tr>
+    <tr><td>马家窑文化系统四期</td><td>石岭下→马家窑→半山→马厂：彩陶演变、墓葬形式、社会分化</td></tr>
+    <tr><td>庙底沟二期 vs 三里桥/客省庄</td><td>中原龙山时代早→晚期；斝→鬲；社会分层加剧</td></tr>
+    <tr><td>干栏式建筑 vs 半地穴式建筑</td><td>南方（河姆渡/马家浜）vs 北方（半坡/庙底沟）；适应不同环境</td></tr>
+  </table>
+
+  <div class="key-point">
+    <strong>💡 答题策略提醒：</strong><br>
+    ① 答名词解释用"时代+地点+特征+意义"四步法<br>
+    ② 答简答题先列核心要点再展开，每个要点配一个遗址/器物举例<br>
+    ③ 答论述题先搭框架再填充——总分总结构，对比思维（南北对比、早晚对比、区域对比）<br>
+    ④ 涉及人类起源论述必须涵盖四阶段+中国代表+两大学说争论<br>
+    ⑤ 涉及文明起源：先亮标准（柴尔德/夏鼐），再用考古证据逐一对应
+  </div>
+
+  <div class="page-footer">
+    资料整理自本地考古考研素材库 · 2026年5月 · 涵盖文件包括《史前各文化类型综述》《旧石器人及文化》《人类起源专题_真题与参考答案》《西北大学史前考古思考题》及各区域对比文档等
+  </div>
+</div>
+
+</body>
+</html>
