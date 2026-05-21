@@ -455,6 +455,65 @@
     color: var(--accent-light);
     font-size: 12pt;
   }
+
+  /* ---- Floating Navigation ---- */
+  .float-nav {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1000;
+  }
+
+  .float-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 16pt;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+  }
+
+  .float-nav a:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 4px 14px rgba(139,94,60,0.25);
+    transform: translateY(-2px);
+  }
+
+  .float-nav a .tooltip {
+    position: absolute;
+    right: 48px;
+    background: var(--ink);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 8.5pt;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  .float-nav a:hover .tooltip {
+    opacity: 1;
+  }
+
+  @media (max-width: 480px) {
+    .float-nav { bottom: 16px; right: 16px; }
+    .float-nav a { width: 36px; height: 36px; font-size: 14pt; }
+  }
 </style>
 </head>
 <body>
@@ -462,9 +521,6 @@
 <!-- ============ PAGE 1: COVER ============ -->
 <div class="page">
   <h1>中国石器时代与<br>史前考古学文化</h1>
-  <div style="margin-bottom:12px; text-align:center;">
-    <a href="../index.html" style="display:inline-block; color:var(--accent); text-decoration:none; font-size:9pt; border:1px solid var(--border); padding:3px 14px; border-radius:4px;">← 返回知识库门户</a>
-  </div>
   <div class="subtitle">考研复习资料 · 考古学通论专题整理</div>
 
   <div style="text-align:center; margin: 24px 0 16px 0;">
@@ -1303,6 +1359,18 @@
   <div class="page-footer">
     资料整理自本地考古考研素材库 · 2026年5月 · 涵盖文件包括《史前各文化类型综述》《旧石器人及文化》《人类起源专题_真题与参考答案》《西北大学史前考古思考题》及各区域对比文档等
   </div>
+</div>
+
+<!-- Floating Navigation -->
+<div class="float-nav">
+  <a href="../index.html" title="返回门户">
+    <span>🏛</span>
+    <span class="tooltip">返回知识库</span>
+  </a>
+  <a href="#" title="返回顶部" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <span>↑</span>
+    <span class="tooltip">返回顶部</span>
+  </a>
 </div>
 
 </body>
